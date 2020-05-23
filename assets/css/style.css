@@ -1,0 +1,249 @@
+html,body{
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+  font-family: Arial;
+}
+
+.sidebar{
+  padding: 10px;
+  margin: 0;
+  width: 15vw;
+  height: 100vh;
+  background-color: #444444; //#444444
+  float: left;
+  position: fixed;
+}
+
+
+
+.sidebar #user-container{
+  padding: 25px;
+}
+
+.sidebar #user-container #user-access{
+  width: 60%;
+  border: none;
+  margin: 0;
+  margin-top: 5px;
+  color: #fff;
+}
+
+.sidebar #brand-container{
+  color: #fff;
+  padding: 25px;
+  margin-top: 40%;
+  font-size: 20px;
+  font-style: italic;
+}
+
+.sidebar #menu{
+  padding: 8px;
+  margin: 0;
+  list-style-type: none;
+  overflow: hidden;
+}
+
+.sidebar #menu .active{
+  font-weight: 700;
+  margin-left: 30px;
+  border-right: 5px solid grey;
+
+}
+
+.sidebar #menu .active a{
+  color: grey;
+}
+
+.sidebar #menu li{
+  margin: 3%;
+  margin-bottom: 10%;
+  color: white;
+  font-size: 18px;
+  margin-left: 20px;
+
+}
+.sidebar #menu li a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.container{
+  margin: 7px;
+  padding: 10px;
+  padding-left: 20px;
+  float: right;
+  width: 79%;
+  justify-content: center;
+}
+
+.card-box-group{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.card-box-group li{
+  float: left;
+  text-align: center;
+  padding: 30px;
+  text-decoration: none;
+}
+
+.card-box{
+  display: block;
+  padding: 10px;
+  width: 110%;
+  border-radius: 7px;
+  height: 10%;
+  background-color: #f1f1f1;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  justify-content: center;
+  text-align: center;
+  border-left: 4px solid #444444;
+  margin-left: 10px;
+}
+
+.card-box-md{
+  display: block;
+  padding: 15px;
+  padding-top: 5px;
+  width: 45%;
+  border-radius: 7px;
+  background-color: #f1f1f1;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-left: 5px;
+  margin-top: 15px;
+  float: left;
+}
+
+.card-box strong {
+  margin-bottom: 10px;
+}
+
+.card-box-lg{
+  display: block;
+  border-radius: 7px;
+  padding-top: 1px;
+  width: 95%;
+  padding :15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-box-lg h4{
+  margin-top: 1px;
+}
+
+.card-box-md i {
+  color: lightgreen;
+}
+
+
+
+
+table, th, td{
+border-collapse: collapse;
+padding-top: 10px;
+padding-bottom: 10px;
+}
+
+#dataTable{
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#dataTable #thead {
+  background-color: #444444;
+  color: #fff;
+}
+
+#dataTable i{
+  cursor: pointer;
+  color: lightgreen;
+}
+
+
+
+#dataTable tbody tr:nth-child(even){
+  background-color: #e6e6e6;
+  color: #444444;
+}
+#dataTable tbody tr:nth-child(odd){
+  background-color: lightgrey;
+  color: #444444;
+  border:none;
+}
+.container #dataTable thead tr th{
+  background-color: #f2f2f2;
+}
+
+.container #form-container{
+  width: : 50%;
+  margin-top: : 2%;
+  margin-bottom: 2%;
+}
+
+#page-title{
+  color: #4d4d4d;
+}
+
+input[type=search]{
+    width: 29%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+#filter{
+  padding: 11px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #444444;
+    color: white;
+}
+#form-container button{
+  background-color: #444444;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+    margin: 10px;
+    margin-right: 2%;
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#action-button{
+  background-color: #444444;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+
+.chart-container{
+  height: 50vh;
+  width: 40vw;
+  padding: 0;
+  display: block;
+
+}
+
+
+.chart .line{
+  padding: 0;
+  margin: 0;
+  background-color: lightgreen;
+  width: 5%;
+  height: 50vh;
+  content: '';
+  margin-left: 2px;
+}
