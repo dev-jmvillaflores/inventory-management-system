@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Inventory | Dashboard</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/media_queries.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
 
@@ -12,19 +13,18 @@
   <body>
     <aside class="sidebar">
       <div class="" id="user-container">
-        <img id="user-image" src="assets/img/default_male.png" alt="" width="40px">
+        <img id="user-image" src="assets/img/default_admin.png" alt="" width="100%">
         <h5 id="user-access">Administrator</h5>
       </div>
-      <hr style="border: .4px solid #4c4c4c; width: 90%">
+
       <ul id="menu">
-        <li class="active"><a href="dashboard"><i style="color: white" class="fa fa-line-chart"></i> Dashboard</a></li>
-        <li ><a href="product"><i style="color: white" class="fa fa-database"></i> Products</a></li>
-        <li><a href="transactions"><i style="color: white" class="fa fa-history"></i> Transactions</a></li>
-        <li><a href="setting"><i style="color: white" class="fa fa-gear"></i> Setting</a></li>
+        <li  class="active"><a href="dashboard"><i style="color: white" class="fa fa-line-chart"></i> <span id="menu-list-label">Dashboard</span></a></li>
+        <li><a href="product"><i style="color: white" class="fa fa-database"></i> <span id="menu-list-label">Products</span></a></li>
+        <li><a href="transactions"><i style="color: white" class="fa fa-history"></i> <span id="menu-list-label">Transactions</span></a></li>
+        <li><a href="setting"><i style="color: white" class="fa fa-gear"></i> <span id="menu-list-label">Setting</span></a></li>
       </ul>
-      <hr style="border: .3px solid #4c4c4c; width: 90%">
       <ul id="menu">
-        <li><a href="dashboard"><i style="color: white" class="fa fa-sign-out"></i> Logout</a></li>
+        <li><a href="dashboard"><i style="color: white" class="fa fa-sign-out"></i> <span id="menu-list-label">Logout</span></a></li>
       </ul>
       <div class="" id="brand-container">
         <strong>iKahon</strong><br>
@@ -33,30 +33,28 @@
     </aside>
     <div class="container">
       <h2 id="page-title"><i class="fa fa-line-chart"></i> Dashboard</h2>
-      <hr style="width: 97%;float:left">
+      <hr style="width: 97%;float:left;border: .5px solid  ">
       <br>
-      <div class="">
-        <ul class="card-box-group">
-          <li style="padding-left: 2px">
-            <div class="card-box" style="margin-left: 1px">
+        <div class="card-box-row">
+          <div class="card-box-column"  >
+            <div class="card-box" >
               <h3 >9</h3>
-              <label>Number of Products</label>
+              <label>Products</label>
             </div>
-          </li>
-          <li>
+          </div>
+          <div class="card-box-column"  >
             <div class="card-box">
               <h3 >5</h3>
               <label>Out of Stocks</label>
             </div>
-          </li>
-          <li>
+            </div>
+            <div class="card-box-column"  >
             <div class="card-box">
-              <h3 >1</h3>
+              <h3>1</h3>
               <label>Pending Requests</label>
             </div>
-          </li>
-        </ul>
-      </div>
+            </div>
+        </div>
 
       <div class="card-box-md" style="margin-right: 15px;">
         <h4 style="margin-top:15px;margin-bottom:5px"><i class="fa fa-truck" style="color: #444444"></i> Pending Requests</h4>

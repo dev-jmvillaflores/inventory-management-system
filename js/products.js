@@ -3,23 +3,14 @@ var apiUrl = 'http://localhost/api.inventory/api/Products/';
 $(document).ready( function() {
   load_data();
 
-  var serial_number = $("#serial_number").val();
-  var product_name = $("#product_name").val();
-  var product_price = $("#product_price").val();
-  var product_quantity = $("#product_quantity").val();
-
-  $("#addButton").click( function(e){
-    document.getElementById('serial_number').setAttribute("value", "");
-    document.getElementById('product_name').setAttribute("value", "");
-    document.getElementById('product_price').setAttribute("value", "");
-    document.getElementById('product_quantity').setAttribute("value", "");
-  });
-
 /*-------------------------------------------------------------------*/
   $('#add-product-form').submit( function(e){
     event.preventDefault();
     var form = $(this);
-
+    var serial_number = $("#serial_number").val();
+    var product_name = $("#product_name").val();
+    var product_price = $("#product_price").val();
+    var product_quantity = $("#product_quantity").val();
     var postData = {
       serial_number: serial_number,
       product_name: product_name,
@@ -34,6 +25,10 @@ $(document).ready( function() {
         dataType: "json",
         success: function(response){
              console.log(response);
+             document.getElementById('serial_number').setAttribute("value", "");
+             document.getElementById('product_name').setAttribute("value", "");
+             document.getElementById('product_price').setAttribute("value", "");
+             document.getElementById('product_quantity').setAttribute("value", "");
               load_data();
         },
       error: function(error){
@@ -47,7 +42,6 @@ $(document).ready( function() {
 
   $('#update-product-form').submit( function(e){
     event.preventDefault();
-
     var updateData = {
         serial_number: $("#u_serial_number").val(),
         product_name:$("#u_product_name").val(),
@@ -86,11 +80,11 @@ $('#serial_number').keyup( function(e){
           console.log(response);
           if(serial_no.length == 8){
              if(response.Found=='0'){
-                var check = `<i id="c"class='fas fa-check valid'></i>`;
+                var check = `<i id="c"class='fas fa-check valid' style="margin-bottom:5px"> Okay</i>`;
                 document.getElementById('verify').innerHTML = check;
               }
                 if(response.Found=='1'){
-                var ubcheck = `<i id="c"class='fas fa-times not-valid'></i>`;
+                var ubcheck = `<i id="c"class='fas fa-times not-valid' style="margin-bottom:5px"> Already Existing</i>`;
                 document.getElementById('verify').innerHTML = ubcheck;
               }
           }else{
@@ -132,7 +126,7 @@ $('#serial_number').keyup( function(e){
                               <td>${data.data[i].product_name}</td>
                               <td><strong>PHP</strong> ${data.data[i].product_price}</td>
                               <td>${data.data[i].product_quantity}</td>
-                              <td><strong>PHP</strong> ${parseFloat(data.data[i].product_price)*+(data.data[i].product_quantity)}</td>
+                              <td><strong>&#8369</strong> ${parseFloat(data.data[i].product_price)*+(data.data[i].product_quantity)}</td>
                               <td><button type='button' id='action-button' name='button' onclick='open_update_form_modal(${data.data[i].ID})'><i class="far fa-edit"></i></button><button onclick='delete_product(${data.data[i].ID})' type='button' id='action-button' val='${data.data[i].id}' name='button'><i class='fa fa-remove'></i></button></td>
                             </tr>`;
             }else {
@@ -141,15 +135,13 @@ $('#serial_number').keyup( function(e){
                               <td>${data.data[i].product_name}</td>
                               <td><strong>PHP</strong> ${data.data[i].product_price}</td>
                               <td>${data.data[i].product_quantity}</td>
-                              <td><strong>PHP</strong> ${parseFloat(data.data[i].product_price)*+(data.data[i].product_quantity)}</td>
+                              <td><strong>&#8369</strong> ${parseFloat(data.data[i].product_price)*+(data.data[i].product_quantity)}</td>
                               <td><button type='button' id='action-button' name='button' onclick='open_update_form_modal(${data.data[i].ID})'><i class="far fa-edit"></i></button><button onclick='delete_product(${data.data[i].ID})' type='button' id='action-button' val='${data.data[i].id}' name='button'><i class='fa fa-remove'></i></button></td>
                             </tr>`;
             }
-
           }
           document.getElementById('data').innerHTML = rowData;
         }
-
       },
       error: function(error){
         console.log(error);
@@ -226,18 +218,18 @@ function load_data(){
               rowData += `<tr style='color:#bf2419'>
                               <td id='serial-number'>${data.data[i].serial_number}</td>
                               <td>${data.data[i].product_name}</td>
-                              <td><strong>PHP</strong> ${data.data[i].product_price}</td>
+                              <td><strong>&#8369</strong> ${data.data[i].product_price}</td>
                               <td>${data.data[i].product_quantity}</td>
-                              <td><strong>PHP</strong> ${parseFloat(data.data[i].product_price)*+(data.data[i].product_quantity)}</td>
+                              <td><strong>&#8369</strong> ${parseFloat(data.data[i].product_price)}</td>
                               <td><button type='button' id='action-button' name='button' onclick='open_update_form_modal(${data.data[i].ID})'><i class="far fa-edit"></i></button><button onclick='delete_product(${data.data[i].ID})' type='button' id='action-button' val='${data.data[i].id}' name='button'><i class='fa fa-remove'></i></button></td>
                             </tr>`;
-            }else {
+            }else{
               rowData += `<tr>
                               <td id='serial-number'>${data.data[i].serial_number}</td>
                               <td>${data.data[i].product_name}</td>
-                              <td><strong>PHP</strong> ${data.data[i].product_price}</td>
+                              <td><strong>&#8369</strong> ${data.data[i].product_price}</td>
                               <td>${data.data[i].product_quantity}</td>
-                              <td><strong>PHP</strong> ${parseFloat(data.data[i].product_price)*+(data.data[i].product_quantity)}</td>
+                              <td><strong>&#8369</strong> ${parseFloat(data.data[i].product_price)*data.data[i].product_quantity}</td>
                               <td><button type='button' id='action-button' name='button' onclick='open_update_form_modal(${data.data[i].ID})'><i class="far fa-edit"></i></button><button onclick='delete_product(${data.data[i].ID})' type='button' id='action-button' val='${data.data[i].id}' name='button'><i class='fa fa-remove'></i></button></td>
                             </tr>`;
             }

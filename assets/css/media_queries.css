@@ -1,0 +1,72 @@
+@media screen and (max-width: 800px) {
+  body{
+    transition:all .5s ease-in-out;
+  }
+  .sidebar{
+    display: block;
+  }
+  .sidebar #user-container{
+  }
+
+  .card-box-column {
+    width: calc(100% / 3);
+    max-height: 20%;
+    min-height: 20%;
+    display: block;
+    margin-bottom: 20px;
+    margin: 1%;
+
+  }
+  .card-box{
+    padding: 10px;
+  }
+  .card-box-row{
+    width: 100%;
+  }
+
+  .sidebar{
+    min-width:8%;
+    height: 100%;
+  }
+
+  .sidebar #menu .active{
+    border-right: 1px var(--main-primary-color);
+    color: var(--main-primary-color);
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  body{
+    transition:all .5s ease-in-out;
+  }
+  .sidebar #user-container #user-image{
+    max-width:100%;
+  }
+  .container{
+    width:85%;
+    padding-right: 3%;
+    display: block;
+  }
+  .card-box-md{
+    width: 95%;
+  }
+  .card-box-column{
+    max-height: 20%;
+  }
+  .sidebar{
+    max-width:6%;
+  }
+  .sidebar #user-container{
+      padding:50% 20% 40% 20%;
+  }
+  .sidebar #menu li,.sidebar #menu .active{
+    padding-top: 30%;
+    padding-left: 40%;
+    padding-right: 40%;
+  }
+  .sidebar #user-container #user-access,
+  .sidebar #menu li a #menu-list-label,
+  .sidebar #brand-container{
+    visibility: hidden;
+  }
+}

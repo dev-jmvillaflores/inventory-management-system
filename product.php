@@ -4,8 +4,9 @@
     <meta charset="utf-8">
     <title>Inventory | Products</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/media_queries.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/fonts/fontawesome-free-5.13.0-web/css/all.min.css">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/modal.css">
     <script src="assets/js/jquery.min.js" charset="utf-8"></script>
     <script src="js/products.js" charset="utf-8"></script>
@@ -15,31 +16,29 @@
 
     <aside class="sidebar">
       <div class="" id="user-container">
-        <img id="user-image" src="assets/img/default_male.png" alt="" width="40px">
+        <img id="user-image" src="assets/img/default_admin.png" alt="" width="100%">
         <h5 id="user-access">Administrator</h5>
       </div>
-      <hr style="border: .4px solid #4c4c4c; width: 90%">
 
       <ul id="menu">
-        <li><a href="dashboard"><i style="color: white" class="fa fa-line-chart"></i> Dashboard</a></li>
-        <li class="active"><a href="product"><i style="color: white" class="fa fa-database"></i> Products</a></li>
-        <li><a href="transactions"><i style="color: white" class="fa fa-history"></i> Transactions</a></li>
-        <li><a href="setting"><i style="color: white" class="fa fa-gear"></i> Setting</a></li>
+        <li><a href="dashboard"><i style="color: white" class="fa fa-line-chart"></i> <span id="menu-list-label">Dashboard</span></a></li>
+        <li class="active"><a href="product"><i style="color: white" class="fa fa-database"></i> <span id="menu-list-label">Products</span></a></li>
+        <li><a href="transactions"><i style="color: white" class="fa fa-history"></i> <span id="menu-list-label">Transactions</span></a></li>
+        <li><a href="setting"><i style="color: white" class="fa fa-gear"></i> <span id="menu-list-label">Setting</span></a></li>
       </ul>
-      <hr style="border: .3px solid #4c4c4c; width: 90%">
       <ul id="menu">
-        <li><a href="dashboard"><i style="color: white" class="fa fa-sign-out"></i> Logout</a></li>
+        <li><a href="dashboard"><i style="color: white" class="fa fa-sign-out"></i> <span id="menu-list-label">Logout</span></a></li>
       </ul>
       <div class="" id="brand-container">
         <strong>iKahon</strong><br>
-        <small>Inventory System</small>
+        <small style="font-size: 10px;font-weight: 600;">Inventory Management System</small>
       </div>
     </aside>
 
 
     <div class="container">
       <h2 id="page-title"><i class="fa fa-database"></i> Products</h2>
-      <hr style="width: 97%;float:left">
+      <hr style="width: 97%;float:left;border: .5px solid  ">
       <br>
       <div class="form-container" id="form-container">
         <input type="search" id="keyword" name="" value="" placeholder="Search Here">
@@ -61,7 +60,7 @@
         <!--Table Start-->
         <div class="" id="table-container">
           <table border="0" id="dataTable">
-              <tr id="thead">
+              <tr id="thead" >
                 <th>Serial Number <i class="fa fa-sort" id="sort-button" onclick=""></i></th>
                 <th>Product Name <i class="fa fa-sort" onclick=""></i></th>
                 <th>Price <i class="fa fa-sort" onclick=""></i></th>
@@ -69,9 +68,19 @@
                 <th>Total Price <i class="fa fa-sort" onclick=""></i></th>
                 <th>Action</th>
               </tr>
-            <tbody id="data">
+              <div class="" >
+                <tbody id="data"  style="overflow-y: auto; max-height:300px;">
+                  <!--<tr style="color:red">
+                                  <td></td>
+                                  <td></td>
+                                  <td><strong>PHP</strong> </td>
+                                  <td></td>
+                                  <td><strong></strong></td>
+                                  <td></td>
+                  </tr>-->
+                </tbody>
+              </div>
 
-            </tbody>
             <tr id="thead">
               <th>Serial Number <i class="fa fa-sort" id="sort-button" onclick=""></i></th>
               <th>Product Name <i class="fa fa-sort" onclick=""></i></th>
@@ -90,16 +99,16 @@
           <div class="modal-content">
             <span class="close">&times;</span>
             <h3>Add Product</h3>
-            <hr style="width:95%;float:left;">
+            <hr style="width:100%;float:left;">
             <form class="" method="post" id="add-product-form">
               <label for="">Serial Number</label><br>
               <input type="text" id="serial_number" maxlength="8" required name="serial_number" value="" placeholder="xxxxxxxx" onkeypress="return event.charCode >= 48 && event.charCode <= 57">  <span id="verify"></span><br>
               <label for="">Product Name</label><br>
               <input type="text" id="product_name" required name="product_name" value="" placeholder="Enter Product Name"><br>
               <label for="">Product Quantity</label><br>
-              <input type="text" id="product_quantity" required onkeypress="return event.charCode >= 48 && event.charCode <= 57"  name="product_quantity" value="" ><br>
+              <input type="text" id="product_quantity" required onkeypress="return event.charCode >= 48 && event.charCode <= 57"  name="product_quantity" value="" placeholder="Enter Product Quantity"><br>
               <label for="">Product Price</label><br>
-              <input type="text" id="product_price" required name="product_price" value="" placeholder="Enter Product Price">
+              <input type="number" id="product_price" required name="product_price" value="" placeholder="Enter Product Price" step="0.01">
               <br>
               <button type="submit" id="add-product" class="submit-button">Add Product</button>
             </form>
@@ -111,16 +120,16 @@
           <div class="modal-content">
             <span class="close_2">&times;</span>
             <h3>Update Product</h3>
-            <hr style="width:95%;float:left;">
+            <hr style="width:100%;float:left;">
             <form class="" method="post" id="update-product-form">
               <label for="">Serial Number</label><br>
-              <input type="text" id="u_serial_number" required disabled  maxlength="8" name="serial_number" onkeypress="return event.charCode >= 48 && event.charCode <= 57"> <span id="verify"></span><br>
+              <input type="text" id="u_serial_number" required disabled  maxlength="8" name="serial_number" onkeypress="return event.charCode >= 48 && event.charCode <= 57"><br>
               <label for="">Product Name</label><br>
               <input type="text" id="u_product_name" required name="product_name" value="" placeholder="Enter Product Name"><br>
               <label for="">Product Quantity</label><br>
-              <input type="text" id="u_product_quantity" required onkeypress="return event.charCode >= 48 && event.charCode <= 57" name="product_quantity" value="" ><br>
+              <input type="text" id="u_product_quantity" required onkeypress="return event.charCode >= 48 && event.charCode <= 57" name="product_quantity" placeholder="Enter Product Quantity"   value="" ><br>
               <label for="">Product Price</label><br>
-              <input type="text" id="u_product_price" required name="product_price" value="" placeholder="Enter Product Price">
+              <input type="number" id="u_product_price" required name="product_price" value="" placeholder="Enter Product Price" step="0.01">
               <br>
               <button type="submit" id="update-product" >Update Product</button>
             </form>

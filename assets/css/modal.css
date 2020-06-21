@@ -52,7 +52,7 @@ cursor: pointer;
 }
 
 #add-item-modal .modal-content input{
-  width: 90%;
+  width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -84,7 +84,7 @@ cursor: pointer;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin-left: 5px;
+    margin-top: 5px;
 }
 
 
@@ -98,7 +98,7 @@ cursor: pointer;
 }
 
 #update-item-modal .modal-content input{
-  width: 90%;
+  width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -121,5 +121,5 @@ cursor: pointer;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin-left: 5px;
+    margin-top: 5px;
 }
