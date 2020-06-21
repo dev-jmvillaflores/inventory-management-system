@@ -1,6 +1,7 @@
 var apiUrl = 'http://localhost/api.inventory/api/';
 
 function post(url, data){
+  var res = "";
   $.ajax({
       url: apiUrl+`${url}.php`,
       method: "POST",
@@ -13,6 +14,7 @@ function post(url, data){
         return error;
       }
   });
+  return res;
 }
 
 function get(url, data){
@@ -37,24 +39,17 @@ function get(url, data){
 
 $(document).ready( function() {
   load_data();
-  
+
 /*-------------------------------------------------------------------*/
   $('#add-product-form').submit( function(e){
-    event.preventDefault();
-    var form = $(this);
-    var serial_number = $("#serial_number").val();
-    var product_name = $("#product_name").val();
-    var product_price = $("#product_price").val();
-    var product_quantity = $("#product_quantity").val();
-    var postData = {
-      serial_number: serial_number,
-      product_name: product_name,
-      product_quantity: product_price,
-      product_price: product_quantity
-    }
-    console.log(JSON.stringify(postData));
-    var response = post('Products/add-product', postData);
-  console.log(response);
+    e.preventDefault();
+    var response = post('Products/add-product', {
+      serial_number: $("#serial_number").val(),
+      product_name:  $("#product_name").val(),
+      product_quantity: $("#product_price").val(),
+      product_price: $("#product_quantity").val()
+    });
+    console.log(response);
     document.getElementById('serial_number').setAttribute("value", "");
     document.getElementById('product_name').setAttribute("value", "");
     document.getElementById('product_price').setAttribute("value", "");
@@ -65,28 +60,22 @@ $(document).ready( function() {
   /*-------------------------------------------------------------------*/
 
   $('#update-product-form').submit( function(e){
-    event.preventDefault();
-    var updateData = {
+    e.preventDefault();
+    var response = post('Products/update-product', {
         serial_number: $("#u_serial_number").val(),
-        product_name:$("#u_product_name").val(),
+        product_name: $("#u_product_name").val(),
         product_quantity:$("#u_product_quantity").val(),
-        product_price:$("#u_product_price").val()
-    }
-    console.log(JSON.stringify(updateData));
-    var response = post('Products/update-product', updateData);
+        product_price: $("#u_product_price").val()
+    });
     location.reload(true);
   });//end-add-product-form-submit
 
 /*-------------------------------------------------------------------*/
 
 $('#serial_number').keyup( function(e){
-    var serial_no = $('#serial_number').val();
-    var data = {
-      serial_number:serial_no
-    }
-    console.log(serial_no);
-      //console.log("OK");
-      var response = get('Products/verify-sn', data);
+      var response = get('Products/verify-sn',{
+          serial_number:serial_no = $('#serial_number').val()
+      });
       console.log(response);
       if(serial_no.length == 8){
          if(response.Found=='0'){
@@ -104,10 +93,10 @@ $('#serial_number').keyup( function(e){
 
   /*-------------------------------------------------------------------*/
   $("#keyword").keyup( function(e){
-    var keyword = $("#keyword").val();
-    var getdata = {keyword:keyword}
     console.log(keyword);
-    var data = get('Products/search-product', getdata);
+    var data = get('Products/search-product', {
+      keyword: $("#keyword").val()
+    });
     if(data.Found=='0'){
       let no_found = `<tr><td colspan='6' style='color: #a1a1a1'>No Product Found</td></tr>`;
       document.getElementById('data').innerHTML = no_found;
@@ -140,7 +129,6 @@ $('#serial_number').keyup( function(e){
       document.getElementById('data').innerHTML = rowData;
     }
   }); //end-search-function
-
 }); //end-ready-function
 
 
@@ -175,12 +163,10 @@ function open_update_form_modal(id){
 }
 
 function read_single_product(id){
-  fetch(apiUrl+`read-single-product.php?id=${id}`).then( function(response){
+  fetch(apiUrl+`Products/read-single-product.php?id=${id}`).then( function(response){
     return response.json();
   }).then( function(data){
     console.log(data);
-
-
     document.getElementById('u_serial_number').setAttribute("value", `${data.serial_number}`);
     document.getElementById('u_product_name').setAttribute("value", `${data.product_name}`);
     document.getElementById('u_product_price').setAttribute("value", `${data.product_price}`);
@@ -192,6 +178,7 @@ function read_single_product(id){
 /*-------------------------------------------------------------------*/
 function load_data(){
   var data = get('Products/read-products', '');
+  console.log(data);
   if(data.product_quantity=='0'){
     let no_found = `<tr><td colspan='6' style='color: #a1a1a1'>No Product Recorded Yet</td></tr>`;
     document.getElementById('data').innerHTML = no_found;
