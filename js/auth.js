@@ -10,11 +10,10 @@ $(document).ready( function(){
         username:user,
         password:pass
       };
-  //  console.log(JSON.stringify(loginData));
+      console.log(loginData);
     $.ajax({
       url:apiUrl+'login-user.php.',
       method: "POST",
-    //  data:JSON.stringify(loginData),
       data:loginData,
       dataType: "JSON",
       success: function(response){
